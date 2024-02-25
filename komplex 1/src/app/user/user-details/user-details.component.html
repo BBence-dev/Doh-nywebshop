@@ -1,0 +1,145 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentUser.id">
+      <h4>User</h4>
+      <div>
+        <label><strong>Név:</strong></label> {{ currentUser.nev }}
+      </div>
+      <div>
+        <label><strong>Kor:</strong></label>
+        {{ currentUser.kor }}
+      </div>
+      <div>
+        <label><strong>Születésihely:</strong></label>
+        {{ currentUser.szhely }}
+      </div>
+      <div>
+        <label><strong>Felhasználónév:</strong></label>
+        {{ currentUser.userName }}
+      </div>
+      <div>
+        <label><strong>Jelszó:</strong></label>
+        {{ currentUser.password }}
+      </div>
+
+    <a class="badge badge-warning" routerLink="/user/{{ currentUser.id }}">
+        Edit
+      </a>
+    </div>
+  
+    <div *ngIf="!currentUser">
+      <br />
+      <p>Please click on a User...</p>
+    </div>
+  </div>
+  <!-- Az "editable" nevű ng-template az szerkeszthető részt tartalmazza.
+     Ha currentUser.id értéke igaz, 
+     akkor az adatok szerkeszthető formban jelennek meg egy űrlapon. -->
+  <ng-template #editable>
+    <div *ngIf="currentUser.id" class="edit-form">
+      <h4>User</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Név</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            [(ngModel)]="currentUser.nev"
+            name="title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="userName">UserName</label>
+          <input
+            type="text"
+            class="form-control"
+            id="userName"
+            required
+            [(ngModel)]="currentUser.userName"
+            name="userName"
+          />
+          <!-- Adatkötés a 'user.description' adatmodellhez -->
+        </div>
+
+  
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="text"
+            class="form-control"
+            id="password"
+            required
+            [(ngModel)]="currentUser.password"
+            name="password"
+          />
+          <!-- Adatkötés a 'user.description' adatmodellhez -->
+        </div>
+
+       <div class="form-group">
+          <label for="szhely">Szálláshely</label>
+          <input
+            type="text"
+            class="form-control"
+            id="szhely"
+            required
+            [(ngModel)]="currentUser.szhely"
+            name="szhely"
+          />
+          <!-- Adatkötés a 'user.description' adatmodellhez -->
+        </div>
+
+        <div class="form-group">
+          <label for="kor">Kor</label>
+          <input
+            type="text"
+            class="form-control"
+            id="kor"
+            required
+            [(ngModel)]="currentUser.kor"
+            name="kor"
+          />
+          <!-- Adatkötés a 'user.description' adatmodellhez -->
+        </div>
+  
+        <div class="form-group">
+          <label><strong>Status:</strong></label>
+          {{ currentUser.szhely }}
+        </div>
+      </form>
+  <!-- Gombok az adatok frissítéséhez, törléséhez és publikáláshoz/elrejtéshez. -->
+  
+     <!-- <button
+        class="badge badge-primary mr-2"
+        *ngIf="currentUser.szhely"
+        (click)="updatePublished(false)"
+      >
+        UnPublish
+      </button>
+      <button
+        *ngIf="!currentUser.szhely"
+        class="badge badge-primary mr-2"
+        (click)="updatePublished(true)"
+      >
+        Publish
+      </button>-->
+  
+      <button class="badge badge-danger mr-2" (click)="deleteUser()">
+        Delete
+      </button>
+  
+     <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateUser()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentUser.id">
+      <br />
+      <p>Cannot access this User...</p>
+    </div>
+  </ng-template>
+  

@@ -1,0 +1,82 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted"><!-- Megjelenítés, ha 'submitted' változó értéke false -->
+        
+        <div class="form-group">
+          <label for="nev">Név</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nev"
+            required
+            [(ngModel)]="user.nev" 
+            name="nev"
+          /><!-- Adatkötés a 'user.title' adatmodellhez -->
+        </div>
+  
+      
+        <div class="form-group">
+          <label for="userName">UserName</label>
+          <input
+            type="text"
+            class="form-control"
+            id="userName"
+            required
+            [(ngModel)]="user.userName"
+            name="userName"
+          />
+          <!-- Adatkötés a 'user.description' adatmodellhez -->
+        </div>
+
+  
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="text"
+            class="form-control"
+            id="password"
+            required
+            [(ngModel)]="user.password"
+            name="password"
+          />
+          <!-- Adatkötés a 'user.description' adatmodellhez -->
+        </div>
+
+       <div class="form-group">
+          <label for="szhely">Szálláshely</label>
+          <input
+            type="text"
+            class="form-control"
+            id="szhely"
+            required
+            [(ngModel)]="user.szhely"
+            name="szhely"
+          />
+          <!-- Adatkötés a 'user.description' adatmodellhez -->
+        </div>
+
+        <div class="form-group">
+          <label for="kor">Kor</label>
+          <input
+            type="text"
+            class="form-control"
+            id="kor"
+            required
+            [(ngModel)]="user.kor"
+            name="kor"
+          />
+          <!-- Adatkötés a 'user.description' adatmodellhez -->
+        </div>
+      
+        <button (click)="saveUser()" class="btn btn-success">Submit</button> <!-- Kattintás eseménykezelése. Ha a gombra kattintanak, meghívódik a 'saveuser()' nevű metódus -->
+     
+      </div>
+  
+      <div *ngIf="submitted"><!-- Megjelenítés, ha 'submitted' változó értéke true -->
+        <h4>user was submitted successfully!</h4>
+        <button class="btn btn-success" (click)="newuser()">Add</button> <!-- Kattintás eseménykezelése. Ha a gombra kattintanak, meghívódik a 'newuser()' nevű metódus -->
+     
+      </div>
+    </div>
+  </div>
+  
