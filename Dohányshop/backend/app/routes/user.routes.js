@@ -10,7 +10,9 @@ module.exports = function(app) {
     next();
   });
 
-  app.get("/api/test/all", controller.allAccess);
+  /*app.get("/api/test/all", controller.allAccess);*/
+  
+  app.get("/api/test/all", controller.findAll);
 
   app.get(
     "/api/test/user",
@@ -19,14 +21,45 @@ module.exports = function(app) {
   );
 
   app.get(
-    "/api/test/mod",
-    [authJwt.verifyToken, authJwt.isModerator],
-    controller.moderatorBoard
+    "/api/test/mod", //url név
+    [authJwt.verifyToken, authJwt.isModerator],// jogosultság kezelés
+    controller.moderatorBoard //controller meg hivása amit használhat a felhasználó
   );
 
   app.get(
     "/api/test/admin",
     [authJwt.verifyToken, authJwt.isAdmin],
-    controller.adminBoard
+    controller.findAll
   );
+
+  app.get(
+    "/api/test/admin/:id",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.findOne
+  );
+
+  app.post(
+    "/api/test/admin",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.create
+  );
+
+  app.put(
+    "/api/test/admin/:id",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.update
+  );
+
+  app.delete(
+    "/api/test/admin",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.delete
+  );
+
+  app.delete(
+    "/api/test/admin/:id",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.deleteAll
+  );
+
 };
