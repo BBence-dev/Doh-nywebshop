@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -7,27 +6,38 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  content?: string;
 
-  constructor(private userService: UserService) { }
+  images = ['/assets/1.jpg', '/assets/2.jpg', '/assets/3.jpg'];
+  links = ['/home','/about','/products']
+  currentImage = 0;
+  currentLink = 0;
+  slideshowInterval: any;
 
-  ngOnInit(): void {
-    this.userService.getPublicContent().subscribe({
-      next: data => {
-        this.content = data;
-      },
-      error: err => {
-        if (err.error) {
-          try {
-            const res = JSON.parse(err.error);
-            this.content = res.message;
-          } catch {
-            this.content = `Error with status: ${err.status} - ${err.statusText}`;
-          }
-        } else {
-          this.content = `Error with status: ${err.status}`;
-        }
-      }
-    });
-  }
-}
+  constructor() {this.startSlideshow(); }
+
+  ngOnInit(): void {}
+
+    startSlideshow() {
+      this.slideshowInterval = setInterval(() => {
+        this.nextImage();
+      }, 3000); // 3 másodperces időközönként vált képet
+    }
+    
+    // A diavetítés megállítása
+    stopSlideshow() {
+      clearInterval(this.slideshowInterval);
+    }
+    
+    // A következő kép megjelenítése
+    nextImage() {
+      this.currentImage = (this.currentImage + 1) % this.images.length;
+      this.currentLink = (this.currentLink + 1) % this.links.length;
+    }
+    
+    // Az előző kép megjelenítése
+    prevImage() {
+      this.currentImage = (this.currentImage - 1 + this.images.length) % this.images.length;
+      this.currentLink = (this.currentLink - 1 + this.links.length) % this.links.length;
+    }
+}  
+   

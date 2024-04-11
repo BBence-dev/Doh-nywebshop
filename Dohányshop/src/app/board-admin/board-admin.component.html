@@ -1,5 +1,123 @@
-<div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
-</div>
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+      <div class="row">
+          <div class="col-12 text-end">
+              <button class="btn btn-sm btn-success" (click)="isListView = !isListView"> {{isListView ? 'New':'List'}}</button>
+          </div>
+      </div>
+      <div *ngIf="isListView" class="row justify-content-center align-items-center h-100">
+          <div class="col-12">
+              <table class="table table-bordered">
+                  <thead>
+                      <tr>
+                          <th>Sr No</th>
+                          <th>ID</th>
+                          <th>Name</th>
+                          <th>Username</th>
+                          <th>Password</th>
+                          <th>Kor</th>
+                          <th>Szhely</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let user of users; let i = index"
+                      [class.active]="i == currentIndex">
+                          <td>{{i+1}}</td>
+                          <td>{{user.id}}</td>
+                          <td>{{user.nev }}</td>
+                          <td>{{user.userName}}</td>
+                          <td>{{user.password }} </td>
+                          <td>{{user.kor }} </td>
+                          <td>{{user.szhely }} </td>
+                          <td>{{user.status }} </td>
+                          <td>
+                              <button class="btn btn-sm btn-primary" (click)="onEdit(user)">Edit</button>
+                              <button class="btn btn-sm btn-danger"  (click)="onDelete(user.id)">Delete</button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <button class="m-3 btn btn-sm btn-danger" (click)="removeAllusers()">
+              Remove All
+            </button>
+      </div>
+      <div  *ngIf="!isListView" class="row justify-content-center align-items-center h-100">
+          <div class="col-12 col-lg-9 col-xl-7">
+              <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                  <div class="card-body p-4 p-md-5">
+                      <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3> 
+
+                          <div class="row">
+                              <div class="col-md-6 mb-4">
+
+                                  <div class="form-outline">
+                                      <input type="text" [(ngModel)]="currentUser.nev" id="firstName" class="form-control form-control-lg" />
+                                      <label class="form-label" for="firstName">First Name</label>
+                                  </div>
+
+                              </div>
+                              <div class="col-md-6 mb-4">
+
+                                  <div class="form-outline">
+                                      <input type="text" id="lastName"  [(ngModel)]="currentUser.userName" class="form-control form-control-lg" />
+                                      <label class="form-label" for="lastName">Last Name</label>
+                                  </div>
+
+                              </div>
+                          </div>
+
+                              <div class="col-md-6 mb-4">
+
+                                  <h6 class="mb-2 pb-1">Status: </h6>
+
+                                  <div class="form-check form-check-inline">
+                                      <input  [(ngModel)]="currentUser.status" class="form-check-input" type="radio" name="gender"
+                                          id="femaleGender" value="admin" checked />
+                                      <label class="form-check-label" for="femaleGender">admin</label>
+                                  </div>
+
+                                  <div class="form-check form-check-inline">
+                                      <input  [(ngModel)]="currentUser.status" class="form-check-input" type="radio" name="gender"
+                                          id="maleGender" value="user" />
+                                      <label class="form-check-label" for="maleGender">User</label>
+                                  </div> 
+                                  <div class="form-check form-check-inline">
+                                      <input  [(ngModel)]="currentUser.status" class="form-check-input" type="radio" name="gender"
+                                          id="maleGender" value="moderator" />
+                                      <label class="form-check-label" for="maleGender">Moderator</label>
+                                  </div> 
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-md-6 mb-4 pb-2">
+
+                                  <div class="form-outline">
+                                      <input  [(ngModel)]="currentUser.kor" type="email" id="emailAddress" class="form-control form-control-lg" />
+                                      <label class="form-label" for="emailAddress">Email</label>
+                                  </div>
+
+                              </div>
+                              <div class="col-md-6 mb-4 pb-2">
+
+                                  <div class="form-outline">
+                                      <input  [(ngModel)]="currentUser.password" type="tel" id="phoneNumber" class="form-control form-control-lg" />
+                                      <label class="form-label" for="phoneNumber">Phone Number</label>
+                                  </div>
+
+                              </div>
+                          </div>
+                          <div class="mt-4 pt-2">
+                              <input class="btn btn-primary btn-lg" (click)="onCreateEmp()" type="button" value="Submit" />
+                          </div> 
+                          <div *ngIf="submitted"><!-- Megjelenítés, ha 'submitted' változó értéke true -->
+                              <h4>user was submitted successfully!</h4>
+                              <button class="btn btn-success" (click)="newuser()">Add</button> <!-- Kattintás eseménykezelése. Ha a gombra kattintanak, meghívódik a 'newuser()' nevű metódus -->
+                           
+                          </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</section>
