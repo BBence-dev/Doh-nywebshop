@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { User } from '../models/user';
-import { UserService } from '../_services/user.service';
+import { Component} from '@angular/core';
+import { Products } from '../models/products';
+import { ProductsService } from '../_services/products.service';
+import { ShoppingCartService } from '../_services/shopping-cart.service';
+import { Cart } from '../models/shoppin-cart';
 
 @Component({
   selector: 'app-products',
@@ -8,44 +10,48 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
-  users?: User[];
 
-  @Input() currentUser: User = {
+  private carts: Cart[] = [];
+
+  products?: Products[];
+
+currentUser: Products = {
     id: undefined,
      nev: '',
-     userName: '',
-     password: '',
-     kor: '',
-     szhely: '',
-     status: ''
+     db:'',
+     ar:''
    };
 
 currentIndex = -1;
  id='';
  nev='';
- userName= '';
- password= '';
- kor= '';
- szhely= '';
- status=''
+ db= '';
+ ar= ''
 
- constructor(private apiService: UserService) {
+ constructor(private apiService: ProductsService,
+  private slService:ShoppingCartService
+ ) {
  }
 
  ngOnInit(): void {
-  this.loadEmployees();
+  this.loadProducts();
 }
 
 
 
-loadEmployees(): void {
-  this.apiService.All()
+loadProducts(): void {
+  this.apiService.getAll()
     .subscribe({
       next: (data) => {
-        this.users = data;
+        this.products = data;
         console.log(data);
       },
       error: (e) => console.error(e)
     });
 }
+
+onAddItem(carts:any) {
+  this.slService.addIngredient(carts);
+}
+
 }

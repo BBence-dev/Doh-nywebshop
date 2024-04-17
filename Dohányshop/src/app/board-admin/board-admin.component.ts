@@ -18,7 +18,7 @@ export class BoardAdminComponent implements OnInit {
 @Input() currentUser: User = {
   id: undefined,
    nev: '',
-   userName: '',
+   username: '',
    password: '',
    kor: '',
    szhely: '',
@@ -29,7 +29,7 @@ export class BoardAdminComponent implements OnInit {
  currentIndex = -1;
  id='';
  nev='';
- userName= '';
+ username= '';
  password= '';
  kor= '';
  szhely= '';
@@ -43,11 +43,7 @@ export class BoardAdminComponent implements OnInit {
     this.loadEmployees();
     this.onCreateEmp();
     this.newuser();
-    this.removeAllusers();
-    this.refreshList();
   }
-
- 
 
   loadEmployees(): void {
     this.apiService.getAll()
@@ -64,7 +60,7 @@ export class BoardAdminComponent implements OnInit {
     const data = {
       id: this.currentUser.id,
       nev: this.currentUser.nev,
-      userName: this.currentUser.userName,
+      userName: this.currentUser.username,
       password: this.currentUser.password,
       szhely: this.currentUser.szhely,
       kor: this.currentUser.kor,
@@ -81,7 +77,6 @@ export class BoardAdminComponent implements OnInit {
   }
 
   onEdit(item: any) { 
-    debugger;
     this.currentUser = item;
     this.isListView = false;
   }
@@ -91,6 +86,7 @@ export class BoardAdminComponent implements OnInit {
     .subscribe({
     next: (res) => {
     console.log(res);
+    this.refreshList();
     },
     error: (e) => console.error(e)
     });
@@ -100,7 +96,7 @@ export class BoardAdminComponent implements OnInit {
     this.currentUser = {
       id:'',
       nev:'',
-      userName:'',
+      username:'',
       password:'',
       szhely:'',
       kor:'',
@@ -112,15 +108,16 @@ export class BoardAdminComponent implements OnInit {
     this.loadEmployees();
     this.currentUser = {
       id:'',
-      nev: '',
-      userName: '',
-      password: '',
-      kor: '',
-      szhely: '',
+      nev:'',
+      username:'',
+      password:'',
+      szhely:'',
+      kor:'',
       status:''
     };
     this.currentIndex = -1;
   }
+
   removeAllusers(): void {
     this.apiService.deleteAll()
       .subscribe({

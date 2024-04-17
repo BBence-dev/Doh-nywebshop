@@ -15,7 +15,7 @@ exports.create = (req, res) => {
   // Create a Tutorial
   const user = {
     nev: req.body.nev,
-    userName: req.body.userName,
+    username: req.body.username,
     password: req.body.password,
     kor: req.body.kor,
     szhely: req.body.szhely,
@@ -38,8 +38,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.nev;
-  var condition = title ? { nev: { [Op.like]: `%${nev}%` } } : null;
+  const nev = req.query.nev;
+  var condition = nev ? { nev: { [Op.like]: `%${nev}%` } } : null;
 
   User.findAll({ where: condition })
     .then(data => {

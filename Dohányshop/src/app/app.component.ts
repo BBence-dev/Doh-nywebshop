@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { StorageService } from './_services/storage.service';
 import { AuthService } from './_services/auth.service';
@@ -15,7 +15,7 @@ export class AppComponent {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-
+  @Output() featureSelected = new EventEmitter<string>();
   eventBusSub?: Subscription;
 
   constructor(
@@ -54,5 +54,11 @@ export class AppComponent {
         console.log(err);
       }
     });
+  }
+
+ 
+
+  onSelect(feature: string) {
+    this.featureSelected.emit(feature);
   }
 }

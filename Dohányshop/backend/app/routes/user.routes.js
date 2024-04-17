@@ -9,10 +9,14 @@ module.exports = function(app) {
     );
     next();
   });
-
-  /*app.get("/api/test/all", controller.allAccess);*/
   
   app.get("/api/test/all", controller.findAll);
+  app.post("/api/test/all", controller.create);
+  app.delete("/api/test/all/:id", controller.delete);
+  app.delete("/api/test/all", controller.deleteAll);
+  app.get("/api/test/all/:id", controller.findOne);
+  app.put("/api/test/all/:id", controller.update);
+
 
   app.get(
     "/api/test/user",

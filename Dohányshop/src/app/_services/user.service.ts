@@ -24,36 +24,31 @@ export class UserService {
   }
 
   getAll(): Observable<User[]> {
-    return this.http.get<User[]>(API_URL + 'admin');
-  }
-
-  All(): Observable<User[]> {
     return this.http.get<User[]>(API_URL + 'all');
   }
-
-   // Egy User lekérése az azonosító alapján
+ // Egy User lekérése az azonosító alapján
   get(id: any): Observable<User> {
-    return this.http.get<User>(`${API_URL + 'admin'}/${id}`);
+    return this.http.get<User>(`${API_URL + 'all'}/${id}`);
   }
 
   // Új User létrehozása
   create(data: any): Observable<any> {
-    return this.http.post(API_URL + 'admin', data);
+    return this.http.post(API_URL + 'all', data);
   }
 
   // User frissítése az azonosító alapján
   update(id: any, data: any): Observable<any> {
-    return this.http.put(`${API_URL + 'admin'}/${id}`, data);
+    return this.http.put(`${API_URL + 'all'}/${id}`, data);
   }
 
   // User törlése az azonosító alapján
   delete(id: any): Observable<any> {
-    return this.http.delete(`${API_URL + 'admin'}/${id}`);
+    return this.http.delete(`${API_URL + 'all'}/${id}`);
   }
 
   // Az összes User törlése
   deleteAll(): Observable<any> {
-    return this.http.delete(API_URL + 'admin');
+    return this.http.delete(API_URL + 'all');
   }
 
   // Cím alapján történő User keresése

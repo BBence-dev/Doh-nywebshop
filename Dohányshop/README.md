@@ -1,59 +1,91 @@
-# Node.js Express Login and Registration example with JWT
+# Angular 16 JWT Authentication & Authorization example with Rest API
 
-- Appropriate Flow for User Login and Registration with JWT Authentication
-- Node.js Express Architecture with CORS, Authentication & Authorization middlewares & Sequelize
-- How to configure Express routes to work with JWT
-- How to define Data Models and association for Authentication and Authorization
-- Way to use Sequelize to interact with MySQL Database
+Build Angular 16 JWT Authentication & Authorization example with Rest Api, HttpOnly Cookie and JWT (including HttpInterceptor, Router & Form Validation).
+- JWT Authentication Flow for User Registration (Signup) & User Login
+- Project Structure with HttpInterceptor, Router
+- Way to implement HttpInterceptor
+- How to store JWT token in HttpOnly Cookie
+- Creating Login, Signup Components with Form Validation
+- Angular Components for accessing protected Resources
+- How to add a dynamic Navigation Bar to Angular App
+- Working with Browser Session Storage
 
-## User Registration, User Login and Authorization process.
-The diagram shows flow of how we implement User Registration, User Login and Authorization process.
+## Flow for User Registration and User Login
+For JWT – Token based Authentication with Rest API, we’re gonna call 2 endpoints:
+- POST `api/auth/signup` for User Registration
+- POST `api/auth/signin` for User Login
+- POST `api/auth/signout` for User Logout
 
-![node-js-express-login-example-flow](node-js-express-login-example-flow.png)
+You can take a look at following flow to have an overview of Requests and Responses that Angular 16 JWT Authentication & Authorization Client will make or receive.
 
-For more detail, please visit:
-> [Node.js Express Login and Registration example with JWT](https://www.bezkoder.com/node-js-express-login-example/)
+![angular-16-jwt-authentication-authorization-flow](angular-16-jwt-authentication-authorization-flow.png)
 
-Front-end that works with this Node back-end:
-- [Angular 12](https://www.bezkoder.com/angular-12-jwt-auth-httponly-cookie/) / [Angular 13](https://www.bezkoder.com/angular-13-jwt-auth-httponly-cookie/) / [Angular 14](https://www.bezkoder.com/angular-14-jwt-auth/) / [Angular 15](https://www.bezkoder.com/angular-15-jwt-auth/) / [Angular 16](https://www.bezkoder.com/angular-16-jwt-auth/) / [Angular 17](https://www.bezkoder.com/angular-17-jwt-auth/)
-- [React](https://www.bezkoder.com/react-login-example-jwt-hooks/) / [React Redux](https://www.bezkoder.com/redux-toolkit-auth/)
+## Angular JWT App Diagram with Router and HttpInterceptor
+![angular-16-jwt-authentication](angular-16-jwt-authentication.png)
 
-## More Practice:
-> [Build Node.js Rest APIs with Express, Sequelize & MySQL](https://www.bezkoder.com/node-js-express-sequelize-mysql/)
+For more detail, please visit the tutorial:
+> [Angular 16 JWT Authentication & Authorization with Web API example](https://www.bezkoder.com/angular-16-jwt-auth/)
 
-> [Server side Pagination in Node.js with Sequelize and MySQL](https://www.bezkoder.com/node-js-sequelize-pagination-mysql/)
+> [Angular 16 Logout when Token is expired](https://www.bezkoder.com/logout-when-token-expired-angular-16/)
 
-> [Node.js Express File Upload Rest API example](https://www.bezkoder.com/node-js-express-file-upload/)
+> [Angular 16 Refresh Token with Interceptor & JWT example](https://www.bezkoder.com/angular-16-refresh-token/)
 
-> [Node.js Express File Upload with Google Cloud Storage example](https://www.bezkoder.com/google-cloud-storage-nodejs-upload-file/)
+## With Spring Boot back-end
 
-> [Node.js JWT Authentication & Authorization example (using HTTP Headers)](https://www.bezkoder.com/node-js-jwt-authentication-mysql/)
+> [Angular 16 + Spring Boot: JWT Authentication and Authorization example](https://www.bezkoder.com/angular-16-spring-boot-jwt-auth/)
 
-> [Node.js JWT Authentication & Authorization example with MongoDB](https://www.bezkoder.com/node-js-mongodb-auth-jwt/)
+## With Node.js Express back-end
 
-Associations:
-> [Sequelize Associations: One-to-Many Relationship example](https://www.bezkoder.com/sequelize-associate-one-to-many/)
+> [Angular 16 + Node.js Express: JWT Authentication and Authorization example](https://www.bezkoder.com/node-js-angular-16-jwt-auth/)
 
-> [Sequelize Associations: Many-to-Many Relationship example](https://www.bezkoder.com/sequelize-associate-many-to-many/)
+Run `ng serve --port 8081` for a dev server. Navigate to `http://localhost:8081/`.
 
-Deployment:
-> [Deploying/Hosting Node.js app on Heroku with MySQL database](https://www.bezkoder.com/deploy-node-js-app-heroku-cleardb-mysql/)
+## More practice
+> [Angular 16 CRUD example with Rest API](https://www.bezkoder.com/angular-16-crud-example/)
 
-> [Docker Compose: Node.js Express and MySQL example](https://www.bezkoder.com/docker-compose-nodejs-mysql/)
+> [Angular 16 Pagination example](https://www.bezkoder.com/angular-16-pagination-ngx/)
 
-Integration on same Server/Port:
-> [Integrate Angular with Node.js Express](https://www.bezkoder.com/integrate-angular-12-node-js/)
+> [Angular 16 File upload example with Progress bar](https://www.bezkoder.com/angular-16-file-upload/)
 
-> [Integrate Vue with Node.js Express](https://www.bezkoder.com/serve-vue-app-express/)
+> [Angular 16 Form Validation example](https://www.bezkoder.com/angular-16-form-validation/)
 
-> [Integrate React with Node.js Express](https://www.bezkoder.com/integrate-react-express-same-server-port/)
+Fullstack with Node:
+> [Angular 16 + Node Express + MySQL example](https://www.bezkoder.com/angular-16-node-js-express-mysql/)
 
-## Project setup
-```
-npm install
-```
+> [Angular 16 + Node Express + PostgreSQL example](https://www.bezkoder.com/angular-16-node-js-express-postgresql/)
 
-### Run
-```
-node server.js
-```
+> [Angular 16 + Node Express + MongoDB example](https://www.bezkoder.com/angular-16-node-js-express-mongodb/)
+
+> [Angular 16 + Node Express: File upload example](https://www.bezkoder.com/angular-16-node-express-file-upload/)
+
+Fullstack with Spring Boot:
+> [Angular 16 + Spring Boot example](https://www.bezkoder.com/spring-boot-angular-16-crud/)
+
+> [Angular 16 + Spring Boot + MySQL example](https://www.bezkoder.com/spring-boot-angular-16-mysql/)
+
+> [Angular 16 + Spring Boot + PostgreSQL example](https://www.bezkoder.com/spring-boot-angular-16-postgresql/)
+
+> [Angular 16 + Spring Boot + MongoDB example](https://www.bezkoder.com/spring-boot-angular-16-mongodb/)
+
+> [Angular 16 + Spring Boot: File upload example](https://www.bezkoder.com/angular-16-spring-boot-file-upload/)
+
+Fullstack with Django:
+> [Angular + Django example](https://www.bezkoder.com/django-angular-13-crud-rest-framework/)
+
+> [Angular + Django + MySQL](https://www.bezkoder.com/django-angular-mysql/)
+
+> [Angular + Django + PostgreSQL](https://www.bezkoder.com/django-angular-postgresql/)
+
+> [Angular + Django + MongoDB](https://www.bezkoder.com/django-angular-mongodb/)
+
+Serverless with Firebase:
+> [Angular 16 Firebase CRUD with Realtime DataBase](https://www.bezkoder.com/angular-16-firebase-crud/)
+
+> [Angular 16 Firestore CRUD example](https://www.bezkoder.com/angular-16-firestore-crud/)
+
+> [Angular 16 Firebase Storage: File Upload/Display/Delete example](https://www.bezkoder.com/angular-16-firebase-storage/)
+
+Integration (run back-end & front-end on same server/port)
+> [How to integrate Angular with Node Restful Services](https://www.bezkoder.com/integrate-angular-12-node-js/)
+
+> [How to Integrate Angular with Spring Boot Rest API](https://www.bezkoder.com/integrate-angular-12-spring-boot/)

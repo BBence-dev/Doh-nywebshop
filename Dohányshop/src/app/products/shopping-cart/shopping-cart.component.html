@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-12" >
+      <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th>Kor</th>
+                <th>Szhely</th>
+            </tr>
+        </thead>
+        <tbody>
+      <tr *ngFor="let cart of carts">
+        <td>{{cart.id}}</td>
+        <td>{{ cart.nev }}</td>
+        <td>{{ cart.ar }}</td>
+        <td>{{cart.db}}</td> 
+        <td><input type="number" id="amount" class="form-control" #amountInput></td>
+        <td><button class="btn btn-danger" type="button" (click)="removeProduct(cart)">Delete</button></td>
+        <!--<button class="btn btn-primary" type="button" (click)="clearProducts()">Clear</button>-->
+          
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+  

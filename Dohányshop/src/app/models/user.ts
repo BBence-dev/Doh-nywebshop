@@ -1,7 +1,7 @@
 export class User{
     id?:any;
     nev?: string;
-    userName?: string;
+    username?: string;
     password?: string;
     kor?:string;
     szhely?:string;
