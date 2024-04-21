@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 exports.signup = async (req, res) => {
-  // Save User to Database
+  // Felhasználó mentése adtbázisba
   try {
     const user = await User.create({
       username: req.body.username,
@@ -27,11 +27,11 @@ exports.signup = async (req, res) => {
       });
 
       const result = user.setRoles(roles);
-      if (result) res.send({ message: "User registered successfully!" });
+      if (result) res.send({ message: "Felhasználó regisztráció teljes!" });
     } else {
-      // user has role = 1
+      // Felhasználó jógósultságánka beléitása alapértemezett felhasználóra
       const result = user.setRoles([1]);
-      if (result) res.send({ message: "User registered successfully!" });
+      if (result) res.send({ message: "Felhasználó regisztráció teljes!" });
     }
   } catch (error) {
     res.status(500).send({ message: error.message });
@@ -47,7 +47,7 @@ exports.signin = async (req, res) => {
     });
 
     if (!user) {
-      return res.status(404).send({ message: "User Not found." });
+      return res.status(404).send({ message: "Nincs ilyen felhasználó." });
     }
 
     const passwordIsValid = bcrypt.compareSync(
@@ -57,7 +57,7 @@ exports.signin = async (req, res) => {
 
     if (!passwordIsValid) {
       return res.status(401).send({
-        message: "Invalid Password!",
+        message: "Helytelen jelszó!",
       });
     }
 
@@ -66,7 +66,7 @@ exports.signin = async (req, res) => {
                            {
                             algorithm: 'HS256',
                             allowInsecureKeySizes: true,
-                            expiresIn: 86400, // 24 hours
+                            expiresIn: 86400, // 24 óra
                            });
 
     let authorities = [];
@@ -92,7 +92,7 @@ exports.signout = async (req, res) => {
   try {
     req.session = null;
     return res.status(200).send({
-      message: "You've been signed out!"
+      message: "Ön kijelentekezett!"
     });
   } catch (err) {
     this.next(err);

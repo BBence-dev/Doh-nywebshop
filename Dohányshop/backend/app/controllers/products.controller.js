@@ -1,88 +1,86 @@
 const db = require("../models");
-const Products = db.products;
+const Product = db.products;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Tutorial
+// Létrehozás és mentés termék
 exports.create = (req, res) => {
-  // Validate request
+  // Kérés ellenörzése
   if (!req.body.nev) {
     res.status(400).send({
-      message: "Content can not be empty!"
+      message: "A tartalom nem lehet üres!"
     });
     return;
   }
 
-  // Create a Tutorial
+  // Termék létrehozása
   const products = {
     nev: req.body.nev,
     db: req.body.db,
     ar: req.body.ar,
-  
-  
   };
 
-  // Save Tutorial in the database
-  Products.create(products)
+  // Termék adatbázisba mentése
+  Product.create(products)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Tutorial."
+          err.message || "Hiba történt a felhasználó létrehozásakor."
       });
     });
 };
 
-// Retrieve all Tutorials from the database.
+// A termékek lekérdezése az adatbázisból
 exports.findAll = (req, res) => {
   const title = req.query.nev;
   var condition = title ? { nev: { [Op.like]: `%${nev}%` } } : null;
 
-  Products.findAll({ where: condition })
+  Product.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Valami hibar történt az adatok lekérdezésekor"
       });
     });
 };
 
-// Find a single Tutorial with an id
+// Egy termék lekérdezése id alapján
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Products.findByPk(id)
+  Product.findByPk(id)
     .then(data => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Tutorial with id=${id}.`
+          message: `Nem található ilyen termék ezzel az idval=${id}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Tutorial with id=" + id
+        message: "Termék lekérdezése nem sikrült" + id
       });
     });
 };
 
-// Update a Tutorial by the id in the request
+// Termék módositása id azonositásal
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Products.update(req.body, {
+  Product.update(req.body, {
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Tutorial was updated successfully."
+          message: "Termék sikeresen frissitve."
         });
       } else {
         res.send({
@@ -101,7 +99,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Products.destroy({
+  Product.destroy({
     where: { id: id }
   })
     .then(num => {
@@ -124,7 +122,7 @@ exports.delete = (req, res) => {
 
 // Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {
-  Products.destroy({
+  Product.destroy({
     where: {},
     truncate: false
   })

@@ -18,9 +18,6 @@ module.exports = (sequelize, Sequelize) => {
     },
     szhely: {
       type: Sequelize.STRING
-    },
-    status: {
-      type: Sequelize.STRING
     }
   });
 

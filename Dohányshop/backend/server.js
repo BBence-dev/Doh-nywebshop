@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cookieSession({
-    name: "bezkoder-session",
+    name: "butella-session",
     keys: ["COOKIE_SECRET"], // should use as secret environment variable
     httpOnly: true,
     sameSite: 'strict'
@@ -55,7 +55,7 @@ db.sequelize.sync({force: true}).then(() => {
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Fut a szerver." });
 });
 
 // routes

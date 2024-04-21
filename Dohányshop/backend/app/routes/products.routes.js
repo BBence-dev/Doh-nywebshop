@@ -10,10 +10,10 @@ module.exports = function(app) {
     });
 
 app.get("/api/test/products", controller.findAll);
-app.get("/api/test/products", controller.create);
-app.get("/api/test/products", controller.findOne);
-app.get("/api/test/products", controller.update);
-app.get("/api/test/products", controller.delete);
-app.get("/api/test/products", controller.deleteAll);
+app.post("/api/test/products", controller.create);
+app.get("/api/test/products/:id", controller.findOne);
+app.put("/api/test/products/:id", controller.update);
+app.delete("/api/test/products/:id", controller.delete);
+app.delete("/api/test/products", controller.deleteAll);
 
 };

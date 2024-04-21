@@ -1,5 +1,6 @@
 const db = require("../models");
 const User = db.user;
+const Role = db.role;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -41,7 +42,7 @@ exports.findAll = (req, res) => {
   const nev = req.query.nev;
   var condition = nev ? { nev: { [Op.like]: `%${nev}%` } } : null;
 
-  User.findAll({ where: condition })
+  User.findAll({ where: condition , include: Role })
     .then(data => {
       res.send(data);
     })
@@ -57,7 +58,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  User.findByPk(id)
+  User.findByPk(id, { include: Role})
     .then(data => {
       if (data) {
         res.send(data);
@@ -74,30 +75,67 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Update a Tutorial by the id in the request
+
 exports.update = (req, res) => {
   const id = req.params.id;
+  
+  // Ellenőrizzük, hogy van-e Role id a requestben
+  if (!req.body.roleId) {
+    return res.status(400).send({
+      message: "A roleId is required to update the user's role."
+    });
+  }
 
-  User.update(req.body, {
-    where: { id: id }
-  })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Tutorial was updated successfully."
-        });
-      } else {
-        res.send({
-          message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`
+  User.findByPk(id)
+    .then(user => {
+      if (!user) {
+        return res.status(404).send({
+          message: `User with id=${id} not found.`
         });
       }
+
+      // Most módosítsuk a User-t
+      user.update(req.body)
+        .then(() => {
+          // Majd módosítsuk a Role-t is
+          Role.findByPk(req.body.roleId)
+            .then(role => {
+              if (!role) {
+                return res.status(404).send({
+                  message: `Role with id=${req.body.roleId} not found.`
+                });
+              }
+              user.setRole(role)
+                .then(() => {
+                  res.send({
+                    message: "User and associated role were updated successfully."
+                  });
+                })
+                .catch(err => {
+                  res.status(500).send({
+                    message: "Error updating user's role."
+                  });
+                });
+            })
+            .catch(err => {
+              res.status(500).send({
+                message: "Error finding role with id=" + req.body.roleId
+              });
+            });
+        })
+        .catch(err => {
+          res.status(500).send({
+            message: "Error updating user with id=" + id
+          });
+        });
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Tutorial with id=" + id
+        message: "Error finding user with id=" + id
       });
     });
 };
+
 
 // Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {
