@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { UserService } from '../_services/user.service';
-import { User } from '../models/user';
+import { Role, User } from '../models/user';
 
 @Component({
   selector: 'app-board-admin',
@@ -9,14 +9,14 @@ import { User } from '../models/user';
 })
 export class BoardAdminComponent implements OnInit {
    // A user objektumok tömbje
- users?: User[];
+ users?: User[] =[];
+ roles?: Role[];
  isListView: boolean = true;
  submitted = false;
 
  // Az aktuális tutoriál, amelyet kiválasztottunk
 
 @Input() currentUser: User = {
-  id: undefined,
    nev: '',
    username: '',
    password: '',
@@ -27,21 +27,24 @@ export class BoardAdminComponent implements OnInit {
 
  // Az aktuális tutoriál indexe a tömbben
  currentIndex = -1;
- id='';
  nev='';
  username= '';
  password= '';
  kor= '';
  szhely= '';
- status=''
+ status='';
+ 
+ role=[]
 
-  constructor(private apiService: UserService) {
+  message='' ;
+
+  constructor(private apiService: UserService,
+  ) {
 
   }
 
   ngOnInit(): void {
     this.loadEmployees();
-    this.onCreateEmp();
     this.newuser();
   }
 
@@ -49,32 +52,14 @@ export class BoardAdminComponent implements OnInit {
     this.apiService.getAll()
       .subscribe({
         next: (data) => {
-          this.users = data;
+          this.users = data.map((user: any) => new User(user));;
           console.log(data);
         },
         error: (e) => console.error(e)
       });
   }
 
-  onCreateEmp() {
-    const data = {
-      id: this.currentUser.id,
-      nev: this.currentUser.nev,
-      userName: this.currentUser.username,
-      password: this.currentUser.password,
-      szhely: this.currentUser.szhely,
-      kor: this.currentUser.kor,
-      status:this.currentUser.status
-    };
-
-    this.apiService.create(data).subscribe({
-        next: (res: any) => {
-          console.log(res);
-          this.submitted = true;
-        },
-        error: (e: any) => console.error(e)
-      });
-  }
+ 
 
   onEdit(item: any) { 
     this.currentUser = item;
@@ -91,6 +76,8 @@ export class BoardAdminComponent implements OnInit {
     error: (e) => console.error(e)
     });
   }
+
+  
     
   newuser(): void {
     this.currentUser = {
@@ -128,4 +115,21 @@ export class BoardAdminComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+  updateCurrentUser(): void {
+    this.message = '';
+
+    this.apiService
+      .update(this.currentUser.id, this.currentUser)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.message = res.message
+            ? res.message
+            : 'This tutorial was updated successfully!';
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  
 }

@@ -17,6 +17,8 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
 import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './products/shopping-cart/shopping-cart.component';
+import { ProductAddComponent } from './products/product-add/product-add.component';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ShoppingCartComponent } from './products/shopping-cart/shopping-cart.co
     BoardUserComponent,
     AboutComponent,
     ProductsComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ProductAddComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

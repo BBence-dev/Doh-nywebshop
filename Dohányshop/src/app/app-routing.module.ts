@@ -11,12 +11,16 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './products/shopping-cart/shopping-cart.component';
+import { ProductAddComponent } from './products/product-add/product-add.component';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'cart', component: ShoppingCartComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'products-add', component: ProductAddComponent },
+  { path: 'products-details', component: ProductDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
