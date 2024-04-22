@@ -8,6 +8,7 @@
                     <th>Sr No</th>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Picture</th>
                     <th>Amount</th>
                     <th>Price</th>
                 </tr>
@@ -17,6 +18,7 @@
                     <td></td>
                     <td></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="currentProducts.nev" name="id" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="currentProducts.url" name="id" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="currentProducts.db" name="id" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="currentProducts.ar" name="id" /></td>
                     <td><button class="btn btn-sm btn-primary" (click)="onCreateProduct()">Creat</button> </td>
@@ -26,6 +28,7 @@
                     <td>{{i+1}}</td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="product.id" name="id" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="product.nev" name="id" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="product.url" name="id" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="product.db" name="id" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="product.ar" name="id" /></td>
                     <td> <button class="btn btn-sm btn-danger"  (click)="onDeleteProduct(product.id)">Delete</button></td>

@@ -12,6 +12,7 @@ export class ProductAddComponent implements OnInit {
 
   @Input() currentProducts: Products = {
     nev: '',
+    url:'',
     db: '',
     ar: ''
   };
@@ -50,6 +51,7 @@ export class ProductAddComponent implements OnInit {
     this.loadProducts();
     this.currentProducts = {
       nev: '',
+      url:'',
       db: '',
       ar: ''
     };
@@ -81,6 +83,7 @@ export class ProductAddComponent implements OnInit {
   newProduct(): void {
     this.currentProducts = {
       nev: '',
+      url:'',
       db: '',
       ar: ''
     };

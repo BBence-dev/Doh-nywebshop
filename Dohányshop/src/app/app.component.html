@@ -1,5 +1,5 @@
 <div id="app">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <a href="#" class="navbar-brand">Dohánywebshop</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
@@ -11,8 +11,14 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="products">Products </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="cart">Cart </a>
+     <li class="nav-item">
+        <form class="d-flex">
+          <button class="btn btn-outline-dark" type="submit" routerLink="cart">
+              <i class="bi bi-basket-fill me-1"></i>
+              Cart
+              <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+          </button>
+      </form>
       </li>
       <li class="nav-item" *ngIf="showAdminBoard">
         <a class="nav-link" routerLink="admin">Admin Board</a>
@@ -26,9 +32,10 @@
       <!--<li class="nav-item">
         <a class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
       </li>-->
+      
       <li class="nav-item">
-        <div class="dropdown1">
-      Mouse over me
+      <div class="dropdown1">
+      Termek
       <div class="dropdown-content1">
         <ul>
           <li><a routerLink="about">about</a></li>

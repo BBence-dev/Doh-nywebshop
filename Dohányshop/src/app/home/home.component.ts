@@ -7,17 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  images = ['/assets/1.jpg', '/assets/2.jpg', '/assets/3.jpg'];
+  /*images = ['/assets/1.jpg', '/assets/2.jpg', '/assets/3.jpg'];
   links = ['/home','/about','/products']
   currentImage = 0;
   currentLink = 0;
   slideshowInterval: any;
 
-  constructor() {this.startSlideshow(); }
+  constructor() {//this.startSlideshow(); }*/
 
   ngOnInit(): void {}
 
-    startSlideshow() {
+    /*startSlideshow() {
       this.slideshowInterval = setInterval(() => {
         this.nextImage();
       }, 3000); // 3 másodperces időközönként vált képet
@@ -38,6 +38,6 @@ export class HomeComponent implements OnInit {
     prevImage() {
       this.currentImage = (this.currentImage - 1 + this.images.length) % this.images.length;
       this.currentLink = (this.currentLink - 1 + this.links.length) % this.links.length;
-    }
+    }*/
 }  
    

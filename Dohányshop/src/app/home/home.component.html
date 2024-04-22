@@ -1,4 +1,4 @@
-<div id="carouselExampleIndicators" class="carousel slide">
+<!--<div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <a [routerLink]="links[currentLink]"><img [src]="images[currentImage]" alt="Slide" class="d-block w-100"></a>
@@ -12,6 +12,54 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+  </div>-->
+
+  <!--<div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/assets/2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/assets/1.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>-->
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="assets/1.jpg" class="d-block w-100" alt="kep1">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/2.jpg" class="d-block w-100" alt="kep2">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/3.jpg" class="d-block w-100" alt="kep3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
 <main class="flex-shrink-0">
   <!-- Header-->
@@ -20,7 +68,7 @@
           <div class="row justify-content-center">
               <div class="col-lg-8 col-xxl-6">
                   <div class="text-center my-5">
-                      <h1 class="fw-bolder mb-3">Our mission is to make building websites easier for everyone.</h1>
+                      <h1 class="fw-bolder mb-3">Küldetésünk az ezzel az odalal hogy egy segitsünk a doháynzóknak és a leszokokat egyaránt</h1>
                       <p class="lead fw-normal text-muted mb-4">Start Bootstrap was built on the idea that quality, functional website templates and themes should be available to everyone. Use our open source, free products, or support us by purchasing one of our premium products or services.</p>
                       <a class="btn btn-primary btn-lg" href="#scroll-target">Read our story</a>
                   </div>
@@ -32,10 +80,10 @@
   <section class="py-5 bg-light" id="scroll-target">
       <div class="container px-5 my-5">
           <div class="row gx-5 align-items-center">
-              <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+              <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="/assets/OIG3.jpg" alt="..." /></div>
               <div class="col-lg-6">
                   <h2 class="fw-bolder">Our founding</h2>
-                  <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                  <p class="lead fw-normal text-muted mb-0">A dohányzásról való leszokásnak számos pozitív hozadéka van. Függetlenül attól, hogy az egyén életének milyen hosszú szakasza telt el dohányzással, sohasem késő leszokni! Amint abbahagyja valaki a dohányzást, a szervezete azonnal elkezdi gyógyítani saját magát. Néhány pozitív hatás már percek, illetve néhány nap elteltével is megmutatkozik:</p>
               </div>
           </div>
       </div>
@@ -44,10 +92,15 @@
   <section class="py-5">
       <div class="container px-5 my-5">
           <div class="row gx-5 align-items-center">
-              <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+              <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="/assets/cora.jpg" alt="..." /></div>
               <div class="col-lg-6">
                   <h2 class="fw-bolder">Growth &amp; beyond</h2>
-                  <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                  <table class="lead fw-normal text-muted mb-0">
+                    <tr><p>20 perc: A nikotin szervezetből való kiürülésével párhuzamosan, 20 percen belül javul a vérkeringés, normalizálódik a pulzusszám és a vérnyomás. Emellett a végtagok keringése is javul, melegszik a kéz és a láb.</p></tr>
+                    <tr><p> 8-12 óra: Normalizálódik a vér oxigén- és szén-monoxid szintje.</p></tr>
+                    <tr><p>24 óra: Egy napi füstmentesség elteltével elkezdődik a hörgők regenerációja, a tüdő tisztulni kezd, az ízlelés és a szaglás jelentősen javul.</p></tr>
+                    <tr><p>72 óra: Három nap elteltével érezhetően könnyebbé válik a légzés.</p></tr>
+                  </table>
               </div>
           </div>
       </div>
