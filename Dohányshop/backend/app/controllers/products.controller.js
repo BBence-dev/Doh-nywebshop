@@ -15,6 +15,7 @@ exports.create = (req, res) => {
   // Termék létrehozása
   const products = {
     nev: req.body.nev,
+    url: req.body.url,
     db: req.body.db,
     ar: req.body.ar,
   };

@@ -3,6 +3,9 @@ module.exports = (sequelize, Sequelize) => {
       nev: {
         type: Sequelize.STRING
       },
+      url: {
+        type: Sequelize.STRING
+      },
       db: {
         type: Sequelize.STRING
       },
