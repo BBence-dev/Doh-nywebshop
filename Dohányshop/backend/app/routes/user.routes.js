@@ -10,12 +10,13 @@ module.exports = function(app) {
     next();
   });
   
-  app.get("/api/test/all", controller.findAll);
-  app.post("/api/test/all", controller.create);
-  app.delete("/api/test/all/:id", controller.delete);
-  app.delete("/api/test/all", controller.deleteAll);
-  app.get("/api/test/all/:id", controller.findOne);
-  app.put("/api/test/all/:id", controller.update);
+  app.get("/api/test/all",[authJwt.verifyToken], controller.findAll);
+  app.post("/api/test/all",[authJwt.verifyToken], controller.create);
+  app.delete("/api/test/all/:id",[authJwt.verifyToken], controller.delete);
+  app.delete("/api/test/all",[authJwt.verifyToken], controller.deleteAll);
+  app.get("/api/test/all/:id",[authJwt.verifyToken], controller.findOne);
+
+  app.put("/api/test/all/:id",[authJwt.verifyToken], controller.update);
 
 
   app.get(
@@ -48,7 +49,7 @@ module.exports = function(app) {
     controller.create
   );
 
-  app.put(
+  app.patch(
     "/api/test/admin/:id",
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.update
