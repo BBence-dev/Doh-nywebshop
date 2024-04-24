@@ -25,7 +25,7 @@
                           <td><input type="text" class="form-control" id="id" [(ngModel)]="user.kor" name="id" /></td>
                           <td><input type="text" class="form-control" id="id" [(ngModel)]="user.szhely" name="id" /></td>
                           <td><input type="text" class="form-control" id="id" [(ngModel)]="user.status" name="id" /></td>
-                          <td *ngFor="let role of user.roles"><input type="text"  class="form-control" id="id" [(ngModel)]="role.name" name="id" /></td>
+                          <td *ngFor="let role of user.roles"><input type="text"  class="form-control" id="id" [(ngModel)]="role.id" name="id" /></td>
                          
                           <!--<td><select id="role" name="role" >
                             <option value="og">{{role.name}}</option>
@@ -34,7 +34,7 @@
                             <option value="user">user</option>
                           </select></td>-->
                           <td> <button class="btn btn-sm btn-danger"  (click)="onDelete(user.id)">Delete</button></td>
-                          <td> <button class="btn btn-sm btn-primary" (click)="updateCurrentUser()">Update</button> </td>
+                          <td> <button class="btn btn-sm btn-primary" (click)="updateCurrentUser(user.id,user)">Update</button> </td>
                       </tr>
                   </tbody>
               </table>

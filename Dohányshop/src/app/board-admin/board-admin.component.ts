@@ -115,11 +115,11 @@ export class BoardAdminComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
-  updateCurrentUser(): void {
+  updateCurrentUser(id:any,users:User): void {
     this.message = '';
 
     this.apiService
-      .update(this.currentUser.id, this.currentUser)
+      .update(id, users)
       .subscribe({
         next: (res) => {
           console.log(res);

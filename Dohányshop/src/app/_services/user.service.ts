@@ -38,11 +38,7 @@ export class UserService {
 
   // User frissítése az azonosító alapján
   update(id: any, data: any): Observable<any> {
-    return this.http.put(`${API_URL + 'all'}/${id}`, data);
-  }
-
-  updateRole(id: any, data: any): Observable<any> {
-    return this.http.put(`${API_URL + 'all'}/${id}`, data);
+    return this.http.patch(`${API_URL + 'admin'}/${id}`, data);
   }
 
   // User törlése az azonosító alapján

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
+import { ProductsService } from 'src/app/_services/products.service';
+import { Products } from 'src/app/models/products';
 
 @Component({
   selector: 'app-product-details',
@@ -6,5 +9,44 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent {
+
+  @Input() viewMode = false;
+
+@Input() currentUser: Products = {
+    id: undefined,
+     nev: '',
+     db:'',
+     ar:''
+   };
+
+currentIndex = -1;
+ id='';
+ nev='';
+ db= '';
+ ar= ''
+
+ constructor(private apiService: ProductsService,
+  private route: ActivatedRoute,
+ ) {
+ }
+
+ 
+
+ ngOnInit(): void {
+  if (!this.viewMode) {
+    this.loadProducts(this.route.snapshot.params['id']);
+  }
+}
+
+ loadProducts(id: string): void {
+  this.apiService.get(id)
+    .subscribe({
+      next: (data) => {
+        this.currentUser = data;
+        console.log(data);
+      },
+      error: (e) => console.error(e)
+    });
+}
 
 }

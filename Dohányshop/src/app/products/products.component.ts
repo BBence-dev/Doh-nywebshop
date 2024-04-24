@@ -37,8 +37,6 @@ currentIndex = -1;
   this.loadProducts();
 }
 
-
-
 loadProducts(): void {
   this.apiService.getAll()
     .subscribe({
