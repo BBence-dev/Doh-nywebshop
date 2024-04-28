@@ -20,7 +20,7 @@ export class BoardAdminComponent implements OnInit {
    nev: '',
    username: '',
    password: '',
-   kor: '',
+   kor: 0,
    szhely: '',
    status: ''
  };
@@ -30,7 +30,7 @@ export class BoardAdminComponent implements OnInit {
  nev='';
  username= '';
  password= '';
- kor= '';
+ kor= 0;
  szhely= '';
  status='';
  
@@ -86,7 +86,7 @@ export class BoardAdminComponent implements OnInit {
       username:'',
       password:'',
       szhely:'',
-      kor:'',
+      kor:0,
       status:''
     };
   }
@@ -99,7 +99,7 @@ export class BoardAdminComponent implements OnInit {
       username:'',
       password:'',
       szhely:'',
-      kor:'',
+      kor:0,
       status:''
     };
     this.currentIndex = -1;

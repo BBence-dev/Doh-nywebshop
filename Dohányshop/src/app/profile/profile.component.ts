@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../_services/storage.service';
 import { UserService } from '../_services/user.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -15,19 +15,19 @@ export class ProfileComponent implements OnInit {
 
   constructor(private storageService: StorageService,
     private userService: UserService,
-    private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.currentUser = this.storageService.getUser();
   }
+  
 
   updateTutorial(): void {
     this.message = '';
 
     this.userService
-      .update(this.currentUser.id, this.currentUser)
+      .update1(this.currentUser.id, this.currentUser)
       .subscribe({
         next: (res) => {
           console.log(res);

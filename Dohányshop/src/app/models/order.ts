@@ -1,7 +1,7 @@
-export class Cart{
+export class Order{
     id?:any;
-    url?:string;
     nev?: string;
+    payment?:string;
     db?:any;
     ar?:any;
 }

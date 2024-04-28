@@ -3,7 +3,7 @@ export class User{
     nev?: string;
     username?: string;
     password?: string;
-    kor?:string;
+    kor?:number;
     szhely?:string;
     status?:string;
 

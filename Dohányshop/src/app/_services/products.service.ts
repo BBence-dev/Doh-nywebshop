@@ -9,6 +9,9 @@ const API_URL = 'http://localhost:8080/api/test/';
   providedIn: 'root'
 })
 export class ProductsService {
+  findByTitle(title: any) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http: HttpClient) {}
 
@@ -41,8 +44,8 @@ export class ProductsService {
   }
 
   // Cím alapján történő products keresése
-  findByNev(nev: any): Observable<Products[]> {
-    return this.http.get<Products[]>(`${API_URL + 'products'}?nev=${nev}`);
+  findByNev(title: any): Observable<Products[]> {
+    return this.http.get<Products[]>(`${API_URL + 'products'}?nev=${title}`);
   }
 
 }

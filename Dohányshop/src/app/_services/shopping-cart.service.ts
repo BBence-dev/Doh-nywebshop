@@ -16,8 +16,18 @@ export class ShoppingCartService {
   }
 
   addIngredient(cart: Cart) {
-    this.carts.push(cart);
-    this.cartsChanged.emit(this.carts.slice());
+    const index = this.carts.findIndex(item => {
+      return item.id === cart.id; // Változtasd meg ezt a feltételt az elem azonosítóját tartalmazóra
+  });
+
+  if (index === -1) {
+      // Ha az elem még nem szerepel a kosárban, akkor addoljuk hozzá
+      this.carts.push(cart);
+      this.cartsChanged.emit(this.carts.slice());
+  } else {
+      // Ha az elem már szerepel a kosárban, itt lehet kezelni ezt az esetet, például figyelmeztetést adni vagy semmit sem tenni
+      console.log('Az elem már szerepel a kosárban!');
+  }
   }
 
   addIngredients(carts: Cart[]) {

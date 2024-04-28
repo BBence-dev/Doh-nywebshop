@@ -18,15 +18,15 @@ export class ProductsComponent {
 currentUser: Products = {
     id: undefined,
      nev: '',
-     db:'',
-     ar:''
+     db:0,
+     ar:0
    };
 
 currentIndex = -1;
  id='';
  nev='';
- db= '';
- ar= ''
+ db= 0;
+ ar= 0
 
  constructor(private apiService: ProductsService,
   private slService:ShoppingCartService

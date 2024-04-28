@@ -19,8 +19,8 @@
                     <td></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="currentProducts.nev" name="id" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="currentProducts.url" name="id" /></td>
-                    <td><input type="text" class="form-control" id="id" [(ngModel)]="currentProducts.db" name="id" /></td>
-                    <td><input type="text" class="form-control" id="id" [(ngModel)]="currentProducts.ar" name="id" /></td>
+                    <td><input type="number" class="form-control" id="id" [(ngModel)]="currentProducts.db" name="id" /></td>
+                    <td><input type="number" class="form-control" id="id" [(ngModel)]="currentProducts.ar" name="id" /></td>
                     <td><button class="btn btn-sm btn-primary" (click)="onCreateProduct()">Creat</button> </td>
                 </tr>
                 <tr *ngFor="let product of products; let i = index"
@@ -29,8 +29,8 @@
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="product.id" name="id" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="product.nev" name="id" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="product.url" name="id" /></td>
-                    <td><input type="text" class="form-control" id="id" [(ngModel)]="product.db" name="id" /></td>
-                    <td><input type="text" class="form-control" id="id" [(ngModel)]="product.ar" name="id" /></td>
+                    <td><input type="number" class="form-control" id="id" [(ngModel)]="product.db" name="id" /></td>
+                    <td><input type="number" class="form-control" id="id" [(ngModel)]="product.ar" name="id" /></td>
                     <td> <button class="btn btn-sm btn-danger"  (click)="onDeleteProduct(product.id)">Delete</button></td>
                     <td> <button class="btn btn-sm btn-primary" (click)="updateProduct(product.id,product)">Update</button> </td>
                 </tr>

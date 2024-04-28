@@ -13,8 +13,8 @@ export class ProductAddComponent implements OnInit {
   @Input() currentProducts: Products = {
     nev: '',
     url:'',
-    db: '',
-    ar: ''
+    db: 0,
+    ar: 0
   };
 
   message = '';
@@ -52,8 +52,8 @@ export class ProductAddComponent implements OnInit {
     this.currentProducts = {
       nev: '',
       url:'',
-      db: '',
-      ar: ''
+      db: 0,
+      ar: 0
     };
     this.currentIndex = -1;
   }
@@ -84,8 +84,8 @@ export class ProductAddComponent implements OnInit {
     this.currentProducts = {
       nev: '',
       url:'',
-      db: '',
-      ar: ''
+      db: 0,
+      ar: 0
     };
   }
 }

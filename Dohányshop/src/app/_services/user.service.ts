@@ -41,6 +41,10 @@ export class UserService {
     return this.http.patch(`${API_URL + 'admin'}/${id}`, data);
   }
 
+  update1(id: any, data: any): Observable<any> {
+    return this.http.put(`${API_URL + 'all'}/${id}`, data);
+  }
+
   // User törlése az azonosító alapján
   delete(id: any): Observable<any> {
     return this.http.delete(`${API_URL + 'all'}/${id}`);

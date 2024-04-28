@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { StorageService } from './_services/storage.service';
 import { AuthService } from './_services/auth.service';
 import { EventBusService } from './_shared/event-bus.service';
+import { Cart } from './models/shoppin-cart';
+import { ShoppingCartService } from './_services/shopping-cart.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,11 @@ import { EventBusService } from './_shared/event-bus.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  carts?: Cart[]=[];
+  currentIndex = -1;
+  dataCount =0;
+
   private roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
@@ -21,7 +28,8 @@ export class AppComponent {
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
-    private eventBusService: EventBusService
+    private eventBusService: EventBusService,
+    private slService: ShoppingCartService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +48,16 @@ export class AppComponent {
     this.eventBusSub = this.eventBusService.on('logout', () => {
       this.logout();
     });
+
+    this.carts = this.slService.getIngredients();
+    this.slService.cartsChanged
+      .subscribe(
+        (carts: Cart[]) => {
+          this.carts = carts; 
+          this.dataCount = this.carts.length;
+        }
+      );
+     
   }
 
   logout(): void {

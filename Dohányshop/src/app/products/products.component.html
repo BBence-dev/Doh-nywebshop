@@ -24,12 +24,15 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder"><a routerLink="/products/{{product.id}}">{{product.nev }}</a></h5>
                             <!-- Product price-->
-                            {{product.ar }}
+                            <h6> {{product.ar }}</h6>
+                            <input [(ngModel)]="product.db" [ngModelOptions]="{standalone: true}" min="1" type="number" value="1"
+                            name="" class="form-control w-25" >
+                           
                         </div>
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" (click)="onAddItem(product)">{{product.db }}</a></div>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" (click)="onAddItem(product)">Kosárhoz</a></div>
                     </div>
                 </div>
             </div>
