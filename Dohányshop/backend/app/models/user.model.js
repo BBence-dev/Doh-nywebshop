@@ -12,9 +12,8 @@ module.exports = (sequelize, Sequelize) => {
     nev: {
       type: Sequelize.STRING
     },
-  
     kor: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     szhely: {
       type: Sequelize.STRING

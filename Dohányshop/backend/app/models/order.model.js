@@ -1,9 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
-    const Products = sequelize.define("products", {
+    const Orders = sequelize.define("Orders", {
       nev: {
         type: Sequelize.STRING
       },
-      url: {
+      payment: {
         type: Sequelize.STRING
       },
       db: {
@@ -14,6 +14,6 @@ module.exports = (sequelize, Sequelize) => {
       }
     });
   
-    return Products;
+    return Orders;
   };
   
